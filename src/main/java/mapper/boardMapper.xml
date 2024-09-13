@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- projectMyBatis/src/main/java/mapper/boardMapper.xml -->
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardSQL">
+
+    <!-- 글쓰기 -->
+    <insert id="boardWrite" parameterType="boardMB">
+        INSERT INTO board_jsp (seq, id, name, email, subject, content, ref)
+        VALUES (seq_board_jsp.NEXTVAL, #{id}, #{name}, #{email}, #{subject}, #{content}, seq_board_jsp.CURRVAL)
+    </insert>
+    
+    <!-- 글 목록 -->
+    <select id="boardList" parameterType="java.util.Map" resultType="boardMB">
+        SELECT * FROM (
+					    SELECT ROWNUM rn, tt.* 
+					    FROM (SELECT * FROM board_jsp ORDER BY ref DESC, step ASC) tt
+		) WHERE rn <![CDATA[>= #{startNum}]]> AND rn <![CDATA[<= #{endNum}]]>
+		<!-- WHERE rn BETWEEN #{startNum} AND #{endNum} -->
+		<!-- WHERE rn &gt;= #{startNum} AND rn &lt;= #{endNum} -->
+    </select>
+    
+    <!-- 글 개수 -->
+    <select id="getTotalA" resultType="int">
+        SELECT COUNT(*) FROM board_jsp
+    </select>
+
+</mapper>
