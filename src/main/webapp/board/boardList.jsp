@@ -81,7 +81,7 @@ th {
 }
 
 #currentPaging {
-    background-color: #e5e7ea;
+   background-color: #e5e7ea;
    border-radius: 5px;
    padding: 5px 8px;
    font-weight: bold;
