@@ -1,4 +1,4 @@
-<%-- projectMyBatis/src/main/webapp/member/boardWrite.jsp --%>
+<%-- projectMyBatis/src/main/webapp/board/boardWrite.jsp --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="board.dao.BoardDAO" %>
 <%@ page import="board.bean.BoardDTO" %>
